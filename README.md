@@ -1,7 +1,16 @@
 # UseDarkMode hook
 This is a very simple react hook to detect dark mode and return you a boolean value if it is dark mode or not.
 
-Example usage:
+## Getting Started
+```
+npm i use-dark-mode-ts
+
+OR
+
+yarn add use-dark-mode-ts
+```
+
+## Example usage:
 
 ```
 import { useDarkMode } from 'use-dark-mode-ts';
