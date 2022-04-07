@@ -1,1 +1,1 @@
-export { useCounter } from './hooks/useCounter/';
+export { useDarkMode } from './hooks/useDarkMode';
