@@ -22,17 +22,26 @@ import { useEffect, useState } from 'react';
  *    }
  */
 
- export const useDarkMode = (): boolean => {
+export const useDarkMode = (): boolean => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    const onChangeEvent: (e: MediaQueryListEvent) => void = (e) => {
+      const colorScheme = e.matches ? 'dark' : 'light';
+      setIsDarkMode(colorScheme === 'dark');
+    };
+
     window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", function (e) {
-        const colorScheme = e.matches ? "dark" : "light";
-        setIsDarkMode(colorScheme === "dark");
-      });
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', onChangeEvent);
+
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', onChangeEvent);
+    };
   }, []);
 
   return isDarkMode;
