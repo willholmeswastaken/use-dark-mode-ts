@@ -22,7 +22,7 @@ yarn add use-dark-mode-ts
 
 ## Example usage:
 
-```
+```js
 import { useDarkMode } from 'use-dark-mode-ts';
 
 const ExampleComponent = () => {
